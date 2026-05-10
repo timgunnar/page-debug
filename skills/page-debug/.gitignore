@@ -1,5 +1,7 @@
 # page-debug 运行时临时文件
 temp/
+
+# Python
 __pycache__/
-.claude
+.pytest_cache/
 .idea

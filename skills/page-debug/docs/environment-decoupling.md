@@ -72,9 +72,9 @@ python {baseDir}/scripts/debug_breakpoint.py --file test.java --line 42 --temp-d
 
 | 变量 | 解耦方式 |
 |------|---------|
-| 框架检测 | 自动按文件扩展名 + 源码特征正则匹配 |
+| 框架检测 | `find_adapter()` 遍历已注册适配器，按文件扩展名 + 源码特征匹配 |
 | 手动指定 | `--framework` 参数覆盖自动检测 |
-| 运行器命令 | `FRAMEWORK_BREAKPOINTS` 字典映射框架 → 运行器，可扩展 |
+| 运行器命令 | 适配器的 `get_runner()` 方法返回框架对应的启动命令，可扩展 |
 
 ### 原始文件保护
 

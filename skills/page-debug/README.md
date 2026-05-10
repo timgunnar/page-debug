@@ -88,10 +88,14 @@ page-debug/
 ├── references/
 │   ├── failure-taxonomy.md        # 测试失败分类与诊断策略
 │   └── layered-debugging.md       # 分层架构项目的穿透追踪方法
+├── scripts/
+│   ├── debug_breakpoint.py        # 断点注入器 + CDP 桥接引擎
+│   └── adapters/                  # 框架适配器
 └── docs/
     ├── design.md                  # 架构设计与关键技术决策
     ├── environment-decoupling.md  # 环境解耦：如何做到跨机器可移植
     ├── multi-framework.md         # 多语言/多框架适配方案
+    ├── robustness.md              # 鲁棒性设计：脆弱点与自愈机制
     └── usability-design.md        # 易用性设计：交互协议与信息架构
 ```
 

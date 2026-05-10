@@ -36,9 +36,9 @@
 
 | 框架 | CDP 配置方式 | 实现思路 |
 |------|-------------|---------|
-| **Python/pytest** | `conftest.py` 的 `browser_type_launch_args` fixture | ✅ 已实现：生成临时 conftest |
+| **Python/pytest** | `conftest.py` 的 `browser_type_launch_args` fixture | ✅ 已实现：PlaywrightPytestAdapter |
 | **Python/unittest** | 测试文件内的 `launch()` 调用 | 修改测试文件中的 `launch(args=[])` |
-| **Java/JUnit** | `BrowserType.LaunchOptions.setArgs()` | 见下方 Java 专题 |
+| **Java/JUnit** | `BrowserType.LaunchOptions.setArgs()` | ✅ 已实现：PlaywrightJavaJUnitAdapter |
 | **TypeScript/JavaScript** | `launch({ args: [] })` 或配置文件 | 修改 launch 调用或 playwright.config.ts |
 | **C#/NUnit** | `BrowserTypeLaunchOptions.Args` | 修改 Playwright.Create 附近代码 |
 
@@ -186,9 +186,9 @@ browser = playwright.chromium().launch(
 
 `references/layered-debugging.md` 已记录此追踪方法。可考虑增强 debug_breakpoint.py 实现自动化追踪——从测试文件出发，沿 import/继承链自动定位 browser launch 点。
 
-## 建议的插件化架构
+## 插件化架构（已实现）
 
-将 Phase 1 拆为独立的"框架适配器"，每个适配器实现统一接口：
+Phase 1 已拆为独立的"框架适配器"，每个适配器实现统一接口：
 
 ```
 scripts/
@@ -246,11 +246,11 @@ def main():
 
 ## 各框架适配器实现要点
 
-### playwright_pytest.py（当前已有，需抽离）
+### playwright_pytest.py（已实现）
 
-将现有 `detect_framework`、`inject_breakpoint`、`setup_cdp` 中的 pytest 逻辑抽离为适配器，主引擎不再包含框架判断。
+已从主引擎抽离为独立适配器。`debug_breakpoint.py` 通过 `find_adapter()` 工厂方法加载，主引擎不再包含框架判断逻辑。
 
-### playwright_java_junit.py（需新建）
+### playwright_java_junit.py（已实现）
 
 - **检测**：`.java` + `com.microsoft.playwright` + `@Test` (JUnit 注解)
 - **断点**：`Thread.sleep(3600000L);`，处理缩进和 `throws` 声明

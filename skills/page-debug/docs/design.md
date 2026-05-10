@@ -97,13 +97,17 @@ Skill 按 Claude Code 规范分层：
 .claude/skills/page-debug/
 ├── SKILL.md              ← 核心指令 (<200行)，工作流 + API 参考
 ├── scripts/
-│   └── debug_breakpoint.py  ← 核心引擎 (~600行)
+│   ├── debug_breakpoint.py  ← 核心引擎 (~650行)，Phase 2-3
+│   └── adapters/            ← 框架适配器，Phase 1
+│       ├── base.py          ← 适配器基类接口
+│       ├── playwright_pytest.py     ← Python/pytest 适配器
+│       └── playwright_java_junit.py ← Java/JUnit 适配器
 └── references/
     ├── failure-taxonomy.md   ← 失败分类与诊断方法
     └── layered-debugging.md  ← 分层架构项目穿透追踪
 ```
 
-SKILL.md 保持精简，详细参考按需查阅。
+SKILL.md 保持精简，详细参考按需查阅。框架适配通过插件化架构实现，新增框架只需添加适配器文件，主引擎无需修改。
 
 ## 备选方案及弃用原因
 
