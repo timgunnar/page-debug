@@ -1,0 +1,8 @@
+{
+  "skills": {
+    "page-debug": {
+      "enabled": true,
+      "path": ".claude/skills/page-debug/SKILL.md"
+    }
+  }
+}
