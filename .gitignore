@@ -1,12 +1,4 @@
-# page-debug 运行时临时文件（由 Skill 在项目目录生成）
+# page-debug 运行时临时文件
 temp/
-
-# Python
 __pycache__/
-.pytest_cache/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
+.claude

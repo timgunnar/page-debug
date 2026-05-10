@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Baidu Search Test Suite">
-    <test name="Search Tests">
-        <classes>
-            <class name="com.example.tests.BaiduSearchTest"/>
-        </classes>
-    </test>
-</suite>
